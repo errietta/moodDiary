@@ -50,10 +50,13 @@ export class HomePage {
       this.moods = [
           "%F0%9F%98%83", //very happy
           "%F0%9F%98%8A", //happy
-          "%F0%9F%98%94", //meh
+          "%F0%9F%98%90", //meh
           "%F0%9F%98%9E", //sad
-          "%F0%9F%98%B4",
-          "%F0%9F%98%A0"
+          "%F0%9F%98%B4", //sleepy
+          "%F0%9F%98%A0", //angry
+          //"%F0%9F%A4%A9", //Excited - not available yet :(
+          "%F0%9F%98%92", //Annoyed
+          "%F0%9F%98%9F", //Worried
       ];
 
       this.day = new Date();
