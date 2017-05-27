@@ -8,11 +8,62 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+    <div class="search">
+        <h1>Search:</h1>
+        <label>
+            Year:
+            <select [(ngModel)]="search.year">
+                <option value="">Please select</option>
+                <option *ngFor="let year of years">{{ year }}</option>
+            </select>
+        </label>
+        <label>
+            Month:
+            <select [(ngModel)]="search.month">
+                <option value="">Please select</option>
+                <option *ngFor="let month of months">{{ month }}</option>
+            </select>
+        </label><br/><br/>
+        <label>
+            Mood:
+            <select [(ngModel)]="search.mood">
+                <option value="">Please select</option>
+                <option *ngFor="let m of moods" value="{{m}}">{{ doDecode(m) }}</option>
+            </select>
+        </label><br/><br/>
+        <button (click)="doSearch()">Search</button>
+    </div>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+    <div *ngIf="searchNotFound">
+        Search: no results found
+    </div>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+    <div *ngIf="searchResults && searchResults.length">
+        <hr />
+        <h1>Search Results:</h1>
+        <button (click)="clearSearch()">Clear</button>
+        <div *ngFor="let r of searchResults">
+            <p>Date: {{ formatYear(r.day) }}</p>
+            <p>Mood: <span class="smiley">{{ doDecode(r.mood) }}</span></p>
+            <p>Desc: {{ r.text }}</p>
+        </div>
+        <button (click)="clearSearch()">Clear</button>
+    </div>
+
+    <hr/>
+
+    <h1>Day: {{ formatYear(mood.day) }}</h1>
+
+    <h2>Mood:</h2>
+    <label class="smiley" *ngFor="let m of moods"> <input type="radio" value="{{m}}" [(ngModel)]="mood.mood" /> {{ doDecode(m) }} </label>
+
+    <h2>Description:</h2>
+    <textarea [(ngModel)]="mood.text" class="mood" ></textarea>
+
+    <h2>Backdate:</h2>
+    <input type="date" [(ngModel)]="mood.backdate" />
+    <br/>
+
+    <span id="status"></span><br/>
+    <button (click)="save()">Save</button>
 </ion-content>
