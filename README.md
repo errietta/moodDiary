@@ -1,4 +1,5 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+A basic mood diary. I spent 2 hours on it so don't hate.
+
 
 ## How to use this template
 
